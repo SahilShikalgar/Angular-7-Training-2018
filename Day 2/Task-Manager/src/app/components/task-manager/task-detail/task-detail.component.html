@@ -1,0 +1,13 @@
+<div *ngIf="task" class="card">
+  <div class="card-header">
+    {{task.title | uppercase}}
+  </div>
+  <div class="card-body">
+    <p>
+      <strong>Completed: </strong>{{task.completed | myUppercase}}
+    </p>
+    <p>
+      <strong>Date : </strong>{{task.date | date }}
+    </p>
+  </div>
+</div>

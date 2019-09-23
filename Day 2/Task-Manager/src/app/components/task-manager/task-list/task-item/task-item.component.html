@@ -1,0 +1,6 @@
+<p>
+  <span appCompleted [completed]="taskItem.completed"> {{taskItem.title}}</span>
+  <button class="btn btn-dark float-right" routerLink="/tasks/{{taskItem.id}}">Details</button>
+
+  <button class="btn btn-danger float-right mr-1" (click)="deleteTask()">Delete</button>
+</p>

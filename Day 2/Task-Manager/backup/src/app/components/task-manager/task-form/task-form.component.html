@@ -1,0 +1,7 @@
+<form (submit)="addTask($event)">
+  <div class="form-group">
+      <label for="task" class="col-form-label">Add Task</label>
+      <input name="task" type="text" id="task" class="form-control" [(ngModel)]="TaskTitle">
+  </div>
+  <button class="btn btn-dark">Add Task</button>
+</form>

@@ -1,0 +1,183 @@
+1) binding data from component class
+using Interpolation 
+showing date and time
+ message:string;
+
+  constructor() { 
+    setInterval(()=>{  
+      let currentdate=new Date();
+      this.message=currentdate.toDateString()+' '+currentdate.toTimeString();
+    },1000);
+  }
+
+  {{ message }}
+
+2) *ngFor
+
+    <p *ngFor="let phoneNumber of user.phone">{{phoneNumber}}</p>
+
+3) ngIf
+ <p *ngIf="user.phone.length>0">Phone : </p>
+
+4) @Input
+@Input('name')userName:string;
+<app-address-card name="addresscard"></app-address-card>
+
+5) Passing member variables to component
+//user is datamember of app.component.ts
+<app-address-card [user]="user"></app-address-card>
+@Input('user')user:User;
+
+Two directions
+1) compo to view []
+2) view to component ()
+3) two way [(ngModel)]
+
+declarations -> components
+providers -> service
+import -> other module
+     
+
+6) Event Binding
+(click)="collapse()"
+ collapse()
+  {
+    this.isCollapsed=!this.isCollapsed;
+  }
+
+7)Two way binding
+used when we have forms and input fields 
+NgModel 
+to achieve two way binding and use ngModel
+add this : In app.module.ts
+import { FormsModule } from '@angular/forms';
+add in imports 
+
+output
+<input type="text" [(ngModel)]="inputText">
+
+
+8)http client rest api
+get
+subscribe
+
+9)Routing
+ng new routing --routing
+{path:'',redirectTo:'/home',pathMatch:'full'},
+{path:'home',component:HomeComponent},
+{path:'setting',component:SettingComponent}
+
+wildcaard ---->>>	URL / Page not found 404
+{path:'**',component:PageComponent}
+
+*** Nested URL  ||| child route
+{path:'setting',component:SettingComponent,
+  children:[
+              {path:'profile',component:ProfileComponent},
+              {path:'contact',component:ContactComponent}
+            ]
+
+<router-outlet></router-outlet>   ++++ in setting compo . html
+
+
+10) showing navigation for routes
+ one way 
+	routerLink --- directive
+ 	 <a routerLink="setting">Settings</a>
+second way 
+	
+<a [routerLink]="settingRoute">Settings</a>
+ts : 
+export class AppComponent {
+  title = 'routing';
+  settingRoute = "setting";
+}
+
+
+
+npm install bootstrap jquery --save
+path:'edit/:id'
+
+
+[routerLink]='home'
+
+
+
+use jquery in ts
+
+declare var $:any;
+$('li').removeClass();
+$('#'+menu).addClass('active');
+
+ImageUploadModule
+
+
+
+
+
+
+
+
+
+
+
+Angular with laraavel
+In service
+import { Http , Headers , RequestOptions } from '@angular/http';
+import { map } from 'rxjs/operators';
+
+server = "http://localhost:8080/parking-system/public/";
+
+  headers :Headers = new Headers();
+  options:any;
+
+  constructor(private http:Http) {
+    this.headers.append('enctype','multipart/form-data');
+    this.headers.append('Content-Type','application/json');
+    this.headers.append('X-Requested-With','XMLHttpRequest');
+
+    this.options = new RequestOptions({headers:this.headers});
+  }
+
+  add(info)
+  {
+    var data = JSON.stringify(info);
+    return this.http.post(this.server+"add",data,this.options).pipe(map(res=>res.json()));
+  }
+
+in component
+    this.Auth.add(this.model).subscribe(response => {console.log(response)})
+
+
+
+Laravel
+In verifycsrfToken.php
+ protected $except = [
+        '/add'
+    ];
+
+
+index.php
+header('Access-Control-Allow-Origin: http://localhost:4200');
+header('Access-Control-Allow-Methods: GET,POST');
+header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token, x-xsrf-token, x_csrftoken, enctype, X-Requested-With');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

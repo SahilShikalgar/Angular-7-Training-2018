@@ -1,0 +1,23 @@
+<h2>{{ title }}</h2>
+
+<input type="text"  value='{{title}}' class="form-control" #textInput1 (input)='changeTitle(textInput1)'>  
+<input type="text"  [value]='title' class="form-control" #textInput2 (input)='changeTitle(textInput2)'>
+<br>
+<hr>
+<input type="text" name="" #textInput (input)='changeTitle(textInput)' [value]='title'> 
+
+<button (click)='changeTitle(textInput)'>Click Me</button><hr>
+
+Two way binding syntax
+<input [(ngModel)]="title">
+
+
+
+
+
+
+
+
+
+<hr>
+

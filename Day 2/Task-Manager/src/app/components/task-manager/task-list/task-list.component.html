@@ -1,0 +1,18 @@
+
+<div class="form-group">
+  <form action="">
+    <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="query1" name="query">
+  </form>
+</div>
+
+<div class="card" *ngIf="taskList.length === 0">
+  <div class="card-body bg-light">
+    No Tasks are avaiable
+  </div>
+</div>
+
+<ul class="list-group" *ngIf="taskList.length > 0">
+  <li class="list-group-item" *ngFor="let task of taskList | search:query"> 
+    <app-task-item [taskItem]="task"></app-task-item> 
+  </li>
+</ul>
